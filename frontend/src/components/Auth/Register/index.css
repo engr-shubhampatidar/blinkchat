@@ -1,0 +1,10 @@
+.SignUp-page {
+    flex-direction: column;
+     color: rgb(42, 36, 36);
+     background-image: url(../../../assets/images/background.jpg);
+    background-size: cover;
+  }
+  
+.height {
+  height: inherit;
+}

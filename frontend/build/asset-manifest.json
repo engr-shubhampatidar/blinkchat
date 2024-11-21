@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d7912d79.css",
+    "main.js": "/static/js/main.0ddbd182.js",
+    "static/js/453.419a5d54.chunk.js": "/static/js/453.419a5d54.chunk.js",
+    "static/media/wave2.png": "/static/media/wave2.053f51818dfa07f5e6e9.png",
+    "static/media/background.jpg": "/static/media/background.435ed38e5dc25538d22d.jpg",
+    "static/media/pink-heart-bg.jpg": "/static/media/pink-heart-bg.562a3fa16b5322d7df43.jpg",
+    "static/media/web-chat-demo.png": "/static/media/web-chat-demo.ea82370ac2603c31ff91.png",
+    "static/media/lust.avif": "/static/media/lust.5c01b6b82ec4a0d85d68.avif",
+    "static/media/image-.png": "/static/media/image-.18068ecfad141afd5b9a.png",
+    "static/media/logo-bell.png": "/static/media/logo-bell.482c170719aae7b1afe8.png",
+    "static/media/love.png": "/static/media/love.e4ffc7816448cc0e4475.png",
+    "static/media/logo-blue.svg": "/static/media/logo-blue.241cc1ed82ea7583fdef3d389da7a8b7.svg",
+    "static/media/logo-white.svg": "/static/media/logo-white.43cfb1f8b414b580bd206679353a4f59.svg",
+    "index.html": "/index.html",
+    "main.d7912d79.css.map": "/static/css/main.d7912d79.css.map",
+    "main.0ddbd182.js.map": "/static/js/main.0ddbd182.js.map",
+    "453.419a5d54.chunk.js.map": "/static/js/453.419a5d54.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7912d79.css",
+    "static/js/main.0ddbd182.js"
+  ]
+}
