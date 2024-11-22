@@ -22,7 +22,8 @@ app.use(
     origin: [
       "https://be-blink-chat.vercel.app",
       "https://fe-blink-chat.vercel.app",
-      `${CLIENT}`,
+      "http://65.0.204.187", // Your frontend's public IP
+      "http://65.0.204.187:3000", // Optional: Frontend on same port for local testing
       "http://localhost:3000",
     ],
     credentials: true,
