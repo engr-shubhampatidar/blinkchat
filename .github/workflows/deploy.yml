@@ -1,0 +1,54 @@
+name: CI/CD Deployment
+
+on:
+  push:
+    branches:
+      - main # Deploy only when pushing to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          cd backend && npm install
+          cd ../frontend && npm install
+
+      # Build the frontend
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build
+
+      # Deploy to EC2
+      - name: Deploy to EC2
+        env:
+          HOST: ${{ secrets.EC2_HOST }}
+          USER: ${{ secrets.EC2_USER }}
+          KEY: ${{ secrets.EC2_KEY }}
+        run: |
+          # Define variables
+          FRONTEND_DIR=/var/www/frontend
+          BACKEND_DIR=/var/www/backend
+          ssh -i "${{ env.KEY }}" ${{ env.USER }}@${{ env.HOST }} "mkdir -p $FRONTEND_DIR $BACKEND_DIR"
+
+          # Upload Frontend
+          scp -i "${{ env.KEY }}" -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$FRONTEND_DIR
+
+          # Upload Backend
+          scp -i "${{ env.KEY }}" -r backend/* ${{ env.USER }}@${{ env.HOST }}:$BACKEND_DIR
+
+          # Restart Backend
+          ssh -i "${{ env.KEY }}" ${{ env.USER }}@${{ env.HOST }} "cd $BACKEND_DIR && npm install && pm2 restart index.js"
