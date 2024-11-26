@@ -32,6 +32,11 @@ jobs:
           cd frontend
           CI=false npm run build
 
+      # Add EC2 server to known_hosts
+      - name: Add host to known_hosts
+        run: |
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
       # Deploy to EC2
       - name: Deploy to EC2
         env:
@@ -39,16 +44,18 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
           KEY: ${{ secrets.EC2_KEY }}
         run: |
-          # Define variables
+          # Define directories
           FRONTEND_DIR=/var/www/frontend
           BACKEND_DIR=/var/www/backend
-          ssh -i "${{ env.KEY }}" ${{ env.USER }}@${{ env.HOST }} "mkdir -p $FRONTEND_DIR $BACKEND_DIR"
 
-          # Upload Frontend
+          # Clean up old files
+          ssh -i "${{ env.KEY }}" ${{ env.USER }}@${{ env.HOST }} "rm -rf $FRONTEND_DIR/* $BACKEND_DIR/* && mkdir -p $FRONTEND_DIR $BACKEND_DIR"
+
+          # Upload frontend build
           scp -i "${{ env.KEY }}" -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$FRONTEND_DIR
 
-          # Upload Backend
+          # Upload backend files
           scp -i "${{ env.KEY }}" -r backend/* ${{ env.USER }}@${{ env.HOST }}:$BACKEND_DIR
 
-          # Restart Backend
-          ssh -i "${{ env.KEY }}" ${{ env.USER }}@${{ env.HOST }} "cd $BACKEND_DIR && npm install && pm2 restart index.js"
+          # Restart backend
+          ssh -i "${{ env.KEY }}" ${{ env.USER }}@${{ env.HOST }} "cd $BACKEND_DIR && npm install && pm2 reload ecosystem.config.js --update-env"
