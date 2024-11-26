@@ -53,8 +53,8 @@ jobs:
           USER: ${{ secrets.EC2_USER }}
         run: |
           # Define paths
-          BUILD_DIR=/home/${{ env.USER }}/backend/build
-          BACKEND_DIR=/home/${{ env.USER }}/backend
+          BUILD_DIR=/home/${{ env.USER }}/blinkchat/backend/build
+          BACKEND_DIR=/home/${{ env.USER }}/blinkchat/backend
 
           # Upload frontend build to backend build directory
           scp -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$BUILD_DIR
