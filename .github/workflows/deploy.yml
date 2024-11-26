@@ -23,8 +23,8 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: |
-          cd backend && npm install
-          cd ../frontend && npm install
+          cd frontend && npm install
+          cd ../backend && npm install
 
       # Build the frontend
       - name: Build Frontend
@@ -47,30 +47,21 @@ jobs:
           ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       # Deploy to EC2
-      - name: Deploy to EC2
+      - name: Deploy Frontend and Restart Backend
         env:
           HOST: ${{ secrets.EC2_HOST }}
           USER: ${{ secrets.EC2_USER }}
         run: |
-          FRONTEND_DIR=/var/www/frontend
-          BACKEND_DIR=/var/www/backend
+          # Define paths
+          BUILD_DIR=/home/${{ env.USER }}/backend/build
+          BACKEND_DIR=/home/${{ env.USER }}/backend
 
-          # Connect to EC2 and execute commands with sudo
-          ssh ${{ env.USER }}@${{ env.HOST }} "
-          sudo mkdir -p $FRONTEND_DIR $BACKEND_DIR && \
-          sudo chown -R ${{ env.USER }}:${{ env.USER }} $FRONTEND_DIR $BACKEND_DIR
-          "
+          # Upload frontend build to backend build directory
+          scp -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$BUILD_DIR
 
-
-          # Upload frontend build
-          scp -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$FRONTEND_DIR
-
-          # Upload backend files
-          scp -r backend/* ${{ env.USER }}@${{ env.HOST }}:$BACKEND_DIR
-
-          # Restart backend
+          # Restart backend application
           ssh ${{ env.USER }}@${{ env.HOST }} "
           cd $BACKEND_DIR && \
           npm install && \
-          pm2 reload ecosystem.config.js --update-env
+          pm2 reload index.js --update-env
           "
