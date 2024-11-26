@@ -35,6 +35,8 @@ jobs:
       # Add EC2 server to known_hosts
       - name: Add host to known_hosts
         run: |
+          run: |
+          mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
       # Deploy to EC2
