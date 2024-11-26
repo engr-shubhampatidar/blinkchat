@@ -39,7 +39,7 @@ const ActiveChat = ({ recipientUser }) => {
         )}
         <div>
           <p className="font-bold text-xl w-auto  text-left ml-2 ">
-            {recipientUser?.name || "Select a user"}
+            {recipientUser?.name || "Ask someone to chat!"}
           </p>
         </div>
       </div>
