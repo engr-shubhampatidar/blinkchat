@@ -51,7 +51,7 @@ jobs:
         env:
           HOST: ${{ secrets.EC2_HOST }}
           USER: ${{ secrets.EC2_USER }}
-            run: |
+        run: |
           FRONTEND_DIR=/var/www/frontend
           BACKEND_DIR=/var/www/backend
 
