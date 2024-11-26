@@ -55,8 +55,10 @@ jobs:
           FRONTEND_DIR=/var/www/frontend
           BACKEND_DIR=/var/www/backend
 
-          # Clean up old files
-          ssh ${{ env.USER }}@${{ env.HOST }} "rm -rf $FRONTEND_DIR/* $BACKEND_DIR/* && mkdir -p $FRONTEND_DIR $BACKEND_DIR"
+        # Connect to EC2 and execute commands with sudo
+          ssh ${{ env.USER }}@${{ env.HOST }} "
+          sudo mkdir -p $FRONTEND_DIR $BACKEND_DIR && \
+          sudo chown -R ${{ env.USER }}:$${USER} $FRONTEND_DIR $BACKEND_DIR"
 
           # Upload frontend build
           scp -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$FRONTEND_DIR
