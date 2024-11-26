@@ -55,10 +55,11 @@ jobs:
           FRONTEND_DIR=/var/www/frontend
           BACKEND_DIR=/var/www/backend
 
-        # Connect to EC2 and execute commands with sudo
+          # Connect to EC2 and execute commands with sudo
           ssh ${{ env.USER }}@${{ env.HOST }} "
           sudo mkdir -p $FRONTEND_DIR $BACKEND_DIR && \
-          sudo chown -R ${{ env.USER }}:$${USER} $FRONTEND_DIR $BACKEND_DIR"
+          sudo chown -R ${{ env.USER }}:$${USER} $FRONTEND_DIR $BACKEND_DIR
+          "
 
           # Upload frontend build
           scp -r frontend/build/* ${{ env.USER }}@${{ env.HOST }}:$FRONTEND_DIR
@@ -67,4 +68,8 @@ jobs:
           scp -r backend/* ${{ env.USER }}@${{ env.HOST }}:$BACKEND_DIR
 
           # Restart backend
-          ssh ${{ env.USER }}@${{ env.HOST }} "cd $BACKEND_DIR && npm install && pm2 reload ecosystem.config.js --update-env"
+          ssh ${{ env.USER }}@${{ env.HOST }} "
+          cd $BACKEND_DIR && \
+          npm install && \
+          pm2 reload ecosystem.config.js --update-env
+          "
