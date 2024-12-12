@@ -42,7 +42,7 @@ function LoginPage() {
               <img src={logo} alt="React Image " className=" h-10" />
             </div>
             <div className="flex font-bold text-3xl text-gray-700 p-2">
-              <p>WelCome Back</p>
+              <p>WelCome Back at Blinkchat</p>
             </div>
             <div className="flex text-xs py-2 px-2 mb-4  text-gray-600 w-48">
               <p>

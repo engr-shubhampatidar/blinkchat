@@ -61,13 +61,13 @@ connectDB()
   app.use("/api/user", userRoutes);
   app.use("/api/messages", messageRoutes);
   
-  // Middleware to serve React's build files
+  /* // Middleware to serve React's build files
   app.use(express.static(path.join(__dirname, 'build')));
   
   // Catch-all route for React
   app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
+  }); */
 
 // Route returning "Hello"
 app.get("/", (req, res) => {
