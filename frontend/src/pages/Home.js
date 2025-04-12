@@ -43,7 +43,7 @@ const Home = () => {
               <button className="bg-[#1A398B] font-semibold px-5 py-2 rounded-lg">Login</button>
             </div>
           </nav>
-          <div className="h-[427px] w-[1189px] flex flex-col mt-[140px]  items-center">
+          <div className="h-[427px] w-[1189px] flex flex-col mt-[140px] p  items-center">
             <div className="flex flex-row items-center justify-center">
               <img className="w-[30px] h-[30px]" src={smile} alt="smile" />
               <p className="text-[24px] font-semibold">with <span className="text-[#1A398B]">BlinkChat</span> </p></div>
