@@ -50,8 +50,8 @@ export const UserList = () => {
                 src={user?.url}
               ></img>
             ) : (
-              <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-[#014efe] rounded-full ">
-                <span class="font-medium text-gray-600 dark:text-gray-300">
+              <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-[#014efe] rounded-full ">
+                <span className="font-medium text-gray-600 dark:text-gray-300">
                   {user.name?.charAt(0).toUpperCase()}
                 </span>
               </div>

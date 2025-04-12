@@ -31,15 +31,15 @@ const ActiveChat = ({ recipientUser }) => {
             src={recipientUser?.url}
           ></img>
         ) : (
-          <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-[#014efe] rounded-full ml-2">
-            <span class="font-medium text-gray-600 dark:text-gray-300 ">
+            <div className="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-[#014efe] rounded-full ml-2">
+              <span className="font-medium text-gray-600 dark:text-gray-300 ">
               {recipientUser?.name.charAt(0).toUpperCase()}
             </span>
           </div>
         )}
         <div>
           <p className="font-bold text-xl w-auto  text-left ml-2 ">
-            {recipientUser?.name || "Ask someone to chat!"}
+            {recipientUser?.name || "Ask Someone!"}
           </p>
         </div>
       </div>
@@ -69,7 +69,7 @@ function Dashboard() {
     <>
       <ChatHub side="left" />
       <div className="flex flex-col items-center w-full h-screen bg-red-300 chat-home-bg p-10 max-sm:p-0">
-        <div className="w-3/6 max-sm:w-full h-full bg-white rounded-xl">
+        <div className="w-3/6 max-sm:w-full h-full dashboard-bg rounded-xl">
           <ActiveChat recipientUser={recipientUser} />
           <Chat />
           {/* <div className="w-3/5 h-auto bg-gray-100 rounded-xl max-sm:rounded max-sm:w-full">

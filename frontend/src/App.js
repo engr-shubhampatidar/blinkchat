@@ -4,6 +4,7 @@ import Register from "./components/Auth/Register/index";
 import LoginPage from "./components/Auth/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Drawer from "./components/Dashboard/ChatHub";
+// import HomeHome from "./pages/HomeHome";
 // import Chat from "./pages/Chat";
 import Home from "./pages/Home";
 import PrivateRoute from "./services/PrivateRoute";
@@ -39,6 +40,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" exact element={<Home />} />
+            {/* <Route path="/home" exact element={<HomeHome />} /> */}
             <Route path="/register" exact element={<Register />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/upload/profile" element={<ImageUpload />} />

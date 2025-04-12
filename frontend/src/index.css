@@ -14,6 +14,68 @@ body {
   background-blend-mode: multiply;
 }
 
+.home-main {
+  height: 1082px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background-image: url(../src//assets/images/bg-wave.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(201, 229, 253, 1);
+
+}
+
+.cardBg {
+  top: 0%;
+  height: 955px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background-image: url(../src//assets/images/homeImage2.png);
+  background-size: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  /* background-color: rgba(201, 229, 253, 1); */
+
+}
+
+.navbar {
+  height: 74px;
+  width: 1220px;
+  margin-top: 33px;
+}
+
+.imageCan {
+  height: 38%;
+}
+
+.cardImageOne {
+  background-image: url(../src//assets/images/cardImageOne.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(201, 229, 253, 1);
+}
+
+.cardImageTwo {
+  background-image: url(../src//assets/images/cardImageTwo.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(201, 229, 253, 1);
+}
+
+.cardImageThree {
+  background-image: url(../src//assets/images/cardImageThree.png);
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(201, 229, 253, 1);
+}
 .chat-home-bg {
   background-image: url(../src//assets/images/background.jpg);
   background-size: cover;
@@ -62,8 +124,6 @@ body {
 .chat-height {
   height: 82vh;
 }
-
-
 
 @tailwind base;
 @tailwind components;

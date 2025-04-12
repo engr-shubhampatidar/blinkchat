@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import editLogo from "./../../assets/images/image-.png";
@@ -104,21 +104,28 @@ const ChatHub = ({ side = "right" }) => {
                             className="rounded-full object-cover w-16 h-16"
                             src={currentUser?.url}
                           ></img>
-                          <div className="absolute-icon rounded-full w-6 h-6 flex items-center justify-center bg-gray-600">
+                          <div className=" absolute-icon rounded-full w-6 h-6 flex items-center justify-center bg-gray-600">
                             <NavLink to={"/upload/profile"}>
                               <img className="h-3 w-3" src={editLogo} />
                             </NavLink>
                           </div>
+
                         </div>
                       ) : (
-                          <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-[#014efe] rounded-full">
-                          <span class="font-medium text-gray-600 dark:text-gray-300">
+                          <div className="relative inline-flex items-center justify-center w-14 h-14  bg-[#014efe] rounded-full">
+                            <span className="font-medium text-2xl text-gray-600 dark:text-gray-300">
                             {currentUser.name?.charAt(0).toUpperCase()}
                           </span>
+                            <div className=" absolute-icon rounded-full w-6 h-6 flex items-center justify-center bg-gray-600">
+                              <NavLink to={"/upload/profile"}>
+                                <img className="h-3 w-3" src={editLogo} />
+                              </NavLink>
+                            </div>
                         </div>
                       )}
                       <div className=" pl-3 text-blue-600 text-xl w-48">
                         <p className="text-sm w-5 font-bold">
+                          {/* {currentUser.number} */}
                           {currentUser.name}
                         </p>
                         <p className="text-xs w-5 ">

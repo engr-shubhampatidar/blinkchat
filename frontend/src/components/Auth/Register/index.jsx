@@ -25,6 +25,7 @@ function Register() {
     email: "",
     password: "",
     name: "",
+    number: "",
     confirmPassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,6 +38,7 @@ function Register() {
           email: userData?.email,
           password: userData?.password,
           name: userData?.name,
+          number: userData?.number,
         })
         .then((response) => {
           localStorage.setItem("user", JSON.stringify(response?.data));
@@ -125,8 +127,15 @@ function Register() {
                     Phone Number
                   </p>
                   <input
+                    value={userData?.number}
+                    onChange={(e) =>
+                      setUserData((prev) => ({
+                        ...prev,
+                        number: e.target.value,
+                      }))
+                    }
                     type="number"
-                    readOnly
+                    // readOnly
                     className=" bg-white rounded-md text-sm text-gray-600 w-56 p-0.5 py-2
                                              border border-solid border-[rgb(214, 206, 206)] mb-4 pl-2"
                     placeholder="+91 18813 31881"
@@ -152,7 +161,7 @@ function Register() {
                     placeholder="example@gmail.com"
                   />
 
-                  <p className="text-xs text-gray-400 text-left w-auto font-bold pb-1 m">
+                  <p className="text-xs text-gray-400 text-left w-auto font-bold pb-1 max-sm:hidden">
                     Confrim password *
                   </p>
                   <input
@@ -165,7 +174,7 @@ function Register() {
                     }
                     type="password"
                     className=" input-area bg-white rounded-md text-sm text-gray-600 w-56 p-0.5 py-2
-                    border border-solid border-[rgb(214, 206, 206)] mb-4 pl-2"
+                    border border-solid border-[rgb(214, 206, 206)] mb-4 pl-2 max-sm:hidden"
                     placeholder="Re-enter Password"
                   />
 
